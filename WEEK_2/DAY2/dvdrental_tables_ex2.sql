@@ -1,3 +1,55 @@
+--ex_1
+create table items(
+ item_id serial primary key,
+ item_name varchar(50) not null,
+ item_price int not null,
+ unique(item_name,item_price)
+)
+TRUNCATE TABLE items restart identity;
+
+insert into items(item_name,item_price) 
+values ('Small desk',100),
+       ('large desk',300),
+	   ('fan',80);
+
+
+create table customers(
+  customer_id serial primary key,
+  first_name varchar(50)  not null,
+  last_name varchar(50) not null
+)
+TRUNCATE TABLE customers restart identity;
+insert into customers(first_name,last_name) 
+values ('Greg','Jones'),
+    ('Sandra','Jones'),
+	('Scott','Scott'),
+	('Trevor','Green'),
+	('Melanie','Johnson');
+	
+SELECT *
+FROM items
+ORDER BY item_price ASC;
+
+SELECT *
+FROM items
+WHERE item_price >= 80
+ORDER BY item_price DESC;
+
+SELECT first_name, last_name
+FROM customers
+ORDER BY first_name ASC
+LIMIT 3;
+
+SELECT last_name
+FROM customers
+ORDER BY last_name DESC;
+
+SELECT DISTINCT last_name
+FROM customers
+ORDER BY last_name DESC;
+
+--ex_2
+
 --1_select all columns from "customer"
 select * from customer
 --2_desplay first_name, last_name as full_name
