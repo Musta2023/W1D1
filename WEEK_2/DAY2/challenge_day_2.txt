@@ -1,0 +1,29 @@
+Q1:
+SELECT COUNT(*) 
+ ( SELECT id FROM SecondTab WHERE id IS NULL ) return ==> (null)
+ FROM FirstTab AS ft WHERE ft.id NOT IN (null) return ==> unknoun
+count(*)===> 0
+
+Q2:
+
+( SELECT id FROM SecondTab WHERE id IS NULL )return ==> 5
+ 
+SELECT COUNT(*) 
+FROM FirstTab AS ft WHERE ft.id NOT IN ( 5) 
+return==>2
+
+Q3:
+
+( SELECT id FROM SecondTab )return ==> (5,null)
+ 
+SELECT COUNT(*) 
+ FROM FirstTab AS ft WHERE ft.id NOT IN (5,null)returns==>0 "every comparaison with 'null' is unkown"
+
+Q4:
+
+
+( SELECT id FROM SecondTab WHERE id IS NOT NULL )==>5
+SELECT COUNT(*) 
+    FROM FirstTab AS ft WHERE ft.id NOT IN (5)==>2
+
+
