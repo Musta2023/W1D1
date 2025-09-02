@@ -178,6 +178,3 @@ select*from customer
 
 select*from rental
 select *from inventory
-
-
-
