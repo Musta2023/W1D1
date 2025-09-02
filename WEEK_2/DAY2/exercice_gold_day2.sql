@@ -26,7 +26,7 @@ create table students(
  last_name varchar (50) not null,
  borth_date date not null
 )
-TRUNCATE TABLE students;
+TRUNCATE TABLE students restart identity;
 
 insert into students(first_name, last_name, borth_date) 
 values 
@@ -166,3 +166,44 @@ order by c.last_name, c.first_name, i.name;
 insert into purchases (customer_id, item_id, quantity_purchased)
 values (5, null, 1);
 -- this fails because item_id is not null and has a foreign key constraint
+
+CREATE TABLE FirstTab (
+     id integer, 
+     name VARCHAR(10)
+)
+CREATE TABLE FirstTab (
+     id integer, 
+     name VARCHAR(10)
+)
+
+INSERT INTO FirstTab VALUES
+(5,'Pawan'),
+(6,'Sharlee'),
+(7,'Krish'),
+(NULL,'Avtaar')
+
+SELECT * FROM FirstTab
+
+CREATE TABLE SecondTab (
+    id integer 
+)
+
+INSERT INTO SecondTab VALUES
+(5),
+(NULL)
+
+
+SELECT * FROM SecondTab;
+
+ SELECT COUNT(*) 
+ FROM FirstTab AS ft WHERE ft.id NOT IN ( SELECT id FROM SecondTab WHERE id IS NULL )
+
+ SELECT COUNT(*) 
+    FROM FirstTab AS ft WHERE ft.id NOT IN ( SELECT id FROM SecondTab WHERE id=5 ) 
+
+    SELECT COUNT(*) 
+    FROM FirstTab AS ft WHERE ft.id NOT IN ( SELECT id FROM SecondTab )
+
+	SELECT COUNT(*) 
+    FROM FirstTab AS ft WHERE ft.id NOT IN (5) 
+
