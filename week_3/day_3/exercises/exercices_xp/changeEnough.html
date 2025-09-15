@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+     
+     function changeEnough(itemPrice,amountOfchange){
+        const changeType=[0.25,0.10,0.05,0.01];
+        let total=0
+        for(i=0;i<amountOfchange.length;i++){
+            total+=amountOfchange[i]*changeType[i];
+        }
+       return total>=itemPrice
+     }
+     console.log(changeEnough(4.25, [25, 20, 5, 0]))
+    </script>
+</body>
+</html>

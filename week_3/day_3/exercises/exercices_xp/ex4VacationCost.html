@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function hotelCost(){
+            let nights;
+            let totalCost;
+            do {
+                let input=prompt("please enter the nbr of night you want to spend.")
+                if(input===null||input.trim()===""){
+                    nights=prompt("please don't leave it blank");
+                    continue;
+                }
+                nights=parseInt(input,10);
+            }while(isNaN(nights)|| nights<=0)
+            totalCost=nights*140;
+            return totalCost;
+        }
+        // alert(`totale cost you will spend is ${hotelCost()} $`)
+           function planRideCost(location){
+            destinations={"london":183, "paris":220, "others":300};
+            let nights;
+            let totalCost;
+            do {
+                const input=prompt("please enter the nbr of night you want to spend.");
+                if(input===null) return null;
+                nights=parseInt(input.trim(),10);
+                
+            }while(isNaN(nights)|| nights<=0);
+
+            do{
+                const input=prompt("please enter your destination(london, paris or others )");
+                if(input===null) return null;
+                location=input.trim().toLowerCase();
+            }while(location==="");
+             const rate=destinations[location] ?? destinations.others;
+            return totalCost=nights*rate
+            
+            
+        }
+        // alert(`totale cost you will spend is ${planRideCost()} $`);
+        function rentalCartCost(){
+            let days;
+            let totalRentCost;
+            do {
+                let input=prompt("please enter the nbr of days you want to rent")
+                if(input===null && input.trim()===""){
+                    input=prompt("please enter a number and don't leave it blank");
+                    continue;
+                }
+                days=parseInt(input.trim(),10)
+                if(days>=10){
+               totalRentCost=(days*40)*0.95;
+            }else{
+               totalRentCost=(days*40);
+            }
+            }while(Number.isNaN(days) || days<=0);
+            
+            
+            return totalRentCost;
+        }
+        //  const cost = rentalCartCost();
+        //     if (cost !== null) {
+        //        alert(`Total rent for the car is $${cost}.`);
+        //     }
+        HotelCost = hotelCost();
+        PlanRideCost = planRideCost();
+        RentalCartcost = rentalCartCost();
+        TotalVicationCost = HotelCost + PlanRideCost + RentalCartcost;
+
+
+        alert(`the car cost: ${RentalCartcost}.  the hotel cost: ${HotelCost}. the plane tickets cost: ${PlanRideCost} so total for this trip is ${TotalVicationCost}`);
+   
+    </script>
+</body>
+</html>
