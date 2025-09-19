@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+  <label for="fname">First name:</label><br>
+  <input type="text" id="fname" name="firstname" required><br>
+  
+  <label for="lname">Last name:</label><br>
+  <input type="text" id="lname" name="lastname" required><br><br>
+  <input type="submit" value="Submit" id="submit">
+<ul class="userAnswer"></ul>
+</form> 
+<script>
+    
+    const firstname=document.getElementById("fname");
+    const lastname=document.getElementById("lname");
+    const form=document.querySelector("form");
+    const input1=document.getElementsByName("firstname")[0];
+    const input2=document.getElementsByName("lastname")[0];
+    const ul=document.querySelector(".userAnswer")
+    
+    form.addEventListener("submit", function(event){
+        event.preventDefault();// to prevent the reload of the page.
+        console.log(firstname.value);
+        console.log(lastname.value);
+        console.log(firstname.id);
+        console.log(lastname.id);
+        console.log(input1.name);
+        console.log(input2.name);
+    
+        const li1=document.createElement("li")
+        li1.textContent=firstname.value;
+        ul.appendChild(li1);
+        const li2=document.createElement("li");
+        li2.textContent=lastname.value;
+        ul.appendChild(li2);
+        firstname.value="";
+        lastname.value="";
+        firstname.focus();
+    })
+  
+</script>
+</body>
+</html>

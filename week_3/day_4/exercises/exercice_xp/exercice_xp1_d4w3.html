@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <article>
+    <h1> Some Facts </h1>
+    <h2> The Chocolate </h2>
+    <h3> History of the chocolate </h3>
+    <button id="onbold">Make it Bold</button>
+    <p> Chocolate is made from tropical Theobroma cacao tree seeds. 
+    Its earliest use dates back to the Olmec civilization in Mesoamerica.</p>
+    <p> After the European discovery of the Americas, chocolate became 
+    very popular in the wider world, and its demand exploded. </p>
+    <p> Chocolate has since become a popular food product that millions enjoy every day, 
+    thanks to its unique, rich, and sweet taste.</p> 
+    <p> But what effect does eating chocolate have on our health?</p> 
+</article>
+<script>
+    const h1=document.querySelector("h1")
+    console.log(h1.innerHTML)
+    h1.addEventListener("mouseover", function(){
+        const randomSize=Math.floor(Math.random()*100)+10;
+        h1.style.fontSize= randomSize+"px"
+    })
+
+    const article=document.querySelector("article")
+    const lastpara=article.lastElementChild
+    lastpara.remove()
+
+    const h2=document.querySelector("h2")
+    h2.addEventListener("click", function(){
+       h2.style.backgroundColor="red";
+    })
+    const h3=document.querySelector("h3")
+    h3.addEventListener("click", function(){
+        h3.style.display="none";
+    })
+    const p=document.querySelectorAll("p")
+    const bold=document.getElementById("onbold")
+    let isBold=false;
+   
+    bold.addEventListener("click", function() {
+  if (!isBold) {
+    // Make all paragraphs bold
+    p.forEach(element => {
+      element.style.fontWeight = "bold";
+    });
+    isBold = true;
+  } else {
+    // Reset to normal
+    p.forEach(element => {
+      element.style.fontWeight = "normal";
+    });
+    isBold = false;
+  }
+    })
+</script>
+</body>
+</html>
