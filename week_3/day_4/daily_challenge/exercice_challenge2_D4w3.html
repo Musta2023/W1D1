@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Letters Only Input</title>
+</head>
+<body>
+  <label for="lettersOnly">Enter only letters:</label>
+  <input type="text" id="lettersOnly" />
+
+  <script>
+    const input = document.getElementById("lettersOnly");
+
+    input.addEventListener("input", function () {
+      // Replace anything that's not a letter with ""
+      this.value = this.value.replace(/[^a-zA-Z]/g, "");
+    });
+  </script>
+</body>
+</html>
