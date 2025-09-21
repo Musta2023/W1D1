@@ -1,0 +1,96 @@
+:root{
+  --yellow: #ffd43b;         /* bright glow color */
+  --yellow-dim: #ffcf33aa;   /* softer glow */
+  --tile: #111;              /* tile bg */
+  --tile-border: #ffcc33;    /* thin yellow border */
+  --tile-shadow: rgba(0,0,0,.6);
+  --text: #eaeaea;
+  --muted: #d4b24a;
+}
+
+*{ box-sizing:border-box; }
+html,body{ height:100%; }
+body{
+  margin:0;
+  color:var(--text);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+}
+
+/* Stage background like the screenshot */
+.stage{
+  min-height:100%;
+  display:grid;
+  place-items:center;
+  background: url("https://beatsure.com/wp-content/uploads/2019/10/How-To-Learn-To-Play-Drums-For-Beginners-e1572373309326.jpg") center/cover no-repeat fixed;
+  padding: 48px 24px;
+}
+
+/* One centered row of pads */
+.row{
+  display:flex;
+  gap: 28px;
+  align-items:center;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+
+/* Pad look: square, yellow border, subtle inner text placement */
+.keys{
+  width: 92px;
+  height: 92px;
+  background: var(--tile);
+  border: 2px solid var(--tile-border);
+  color: var(--text);
+  cursor: pointer;
+  border-radius: 6px;
+  box-shadow:
+    0 8px 28px var(--tile-shadow);
+  display:grid;
+  grid-template-rows: 1fr auto;
+  place-items:center;
+  text-align:center;
+  position: relative;
+  transition: transform .06s ease, box-shadow .12s ease, background .12s ease;
+}
+ .keys:hover{ transform: translateX(-2px) scale(1.06); }
+  .keys.selected{ outline: 3px solid; }
+
+.keys .letter{
+  font-size: 40px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 2px;
+}
+
+.keys .name{
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+/* Active state: big yellow glow */
+.keys.playing{
+  background: #0e0e0e;
+  transform: translateY(1px) scale(0.98);
+  box-shadow:
+    0 0 20px 6px var(--yellow-dim),
+    0 0 60px 18px var(--yellow-dim),
+    0 8px 28px var(--tile-shadow);
+}
+
+/* Accessibility: focus ring */
+.keys:focus-visible{
+  outline: 3px solid var(--yellow);
+  outline-offset: 4px;
+}
+
+/* Responsive tweaks */
+@media (max-width: 900px){
+  .keys{ width:82px; height:82px; }
+  .keys.letter{ font-size:34px; }
+}
+@media (max-width: 560px){
+  .row{ gap:18px; }
+  .keys{ width:74px; height:74px; }
+  .keys .letter{ font-size:28px; }
+}
