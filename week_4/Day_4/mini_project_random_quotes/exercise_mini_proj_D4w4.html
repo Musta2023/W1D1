@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+      <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+    section {
+      margin: 20px auto;
+      padding: 20px;
+      border: 2px solid #ccc;
+      width: 50%;
+      min-height: 60px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+     <h1>Random Quote Generator</h1>
+    <section id="quoteSection"></section>
+    <button id="generateBtn">Generate quote</button>
+    <h1>Submit new quote</h1>
+    <form id="addQuote">
+        <input type="text" id="authorInput" placeholder="Name of Author" required><br>
+        <textarea type="text" id="quoteInput" placeholder="write quote..." rows="4" cols="90" required></textarea><br><br>
+        <button type="submit" id="submitQuote">Submit new quote</button>
+    </form>
+  
+
+<div id="tools" style="margin-top:16px;">
+  <button id="charsWithSpacesBtn" disabled>Characters (with spaces)</button>
+  <button id="charsNoSpacesBtn" disabled>Characters (no spaces)</button>
+  <button id="wordCountBtn" disabled>Word count</button>
+  <button id="likeBtn" disabled>Like</button>
+  <span id="likeCount" style="margin-left:8px; font-weight:bold;"></span>
+</div>
+<hr style="margin:24px auto; width:50%;">
+
+<h2>Filter by Author</h2>
+<form id="filterForm" style="margin: 10px auto; display:flex; gap:8px; justify-content:center; flex-wrap:wrap;">
+  <input id="authorFilterInput" type="text" placeholder="Exact author (e.g., Maya Angelou)" aria-label="Author name" />
+  <button id="filterBtn" type="submit">Filter Quotes</button>
+  <button id="resetFilterBtn" type="button" hidden>Reset</button>
+</form>
+
+<div id="filterMeta" style="color:#666; margin:6px 0;"></div>
+
+<div style="display:flex; gap:8px; justify-content:center; margin-top:8px;">
+  <button id="prevBtn" type="button" disabled>Previous</button>
+  <button id="nextBtn" type="button" disabled>Next</button>
+</div>
+
+    <script src="exercise_mini_proj_D4w4.js"></script>
+</body>
+</html>
