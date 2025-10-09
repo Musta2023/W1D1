@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RoboFriends</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background-color: #7b5fb8;
+            background-image: 
+                repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px),
+                repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px);
+            min-height: 100vh;
+            padding-bottom: 40px;
+        }
+
+        .header {
+            background: linear-gradient(180deg, #4ecdc4 0%, #44b3aa 100%);
+            padding: 20px 40px;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #2c3e50;
+            text-shadow: 2px 2px 0px rgba(0,0,0,0.1);
+            letter-spacing: 2px;
+            white-space: nowrap;
+        }
+
+        .search-container {
+            flex: 1;
+            max-width: 700px;
+        }
+
+        .search-bar {
+            width: 100%;
+            padding: 15px 20px;
+            font-size: 1.1em;
+            border: 3px solid #a8e6e3;
+            border-radius: 8px;
+            outline: none;
+            background-color: #d4f4f2;
+            color: #2c3e50;
+            font-family: 'Courier New', monospace;
+        }
+
+        .search-bar::placeholder {
+            color: #7ba5a3;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 50px auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+            padding: 0 40px;
+        }
+
+        .robot-card {
+            background: linear-gradient(180deg, #4ecdc4 0%, #44b3aa 100%);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .robot-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.3);
+        }
+
+        .robot-image {
+            width: 100%;
+            height: 320px;
+            background: #2c3e50;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin: 20px;
+            width: calc(100% - 40px);
+            height: 320px;
+        }
+
+        .robot-avatar {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 100px;
+        }
+
+        .robot-info {
+            padding: 20px 25px 30px 25px;
+            text-align: center;
+        }
+
+        .robot-name {
+            font-size: 1.8em;
+            color: #2c3e50;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .robot-email {
+            color: #2c3e50;
+            font-size: 1em;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                padding: 20px;
+                gap: 15px;
+            }
+
+            .logo {
+                font-size: 2em;
+            }
+
+            .container {
+                grid-template-columns: 1fr;
+                padding: 0 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">ROBOFRIENDS</div>
+        <div class="search-container">
+            <input type="text" id="searchInput" class="search-bar" placeholder="Search Robots">
+        </div>
+    </div>
+
+    <div class="container" id="robotContainer">
+        <div class="robot-card" data-name="leanne graham" data-email="sincere@april.biz">
+            <div class="robot-image">
+                <img src="https://robohash.org/1?size=200x200" alt="Robot 1" style="border-radius: 50%;">
+            </div>
+            <div class="robot-info">
+                <h2 class="robot-name">Leanne Graham</h2>
+                <p class="robot-email">Sincere@april.biz</p>
+            </div>
+        </div>
+
+        <div class="robot-card" data-name="ervin howell" data-email="shanna@melissa.tv">
+            <div class="robot-image">
+                <img src="https://robohash.org/2?size=200x200" alt="Robot 2" style="border-radius: 50%;">
+            </div>
+            <div class="robot-info">
+                <h2 class="robot-name">Ervin Howell</h2>
+                <p class="robot-email">Shanna@melissa.tv</p>
+            </div>
+        </div>
+
+        <div class="robot-card" data-name="clementine bauch" data-email="nathan@yesenia.net">
+            <div class="robot-image">
+                <img src="https://robohash.org/3?size=200x200" alt="Robot 3" style="border-radius: 50%;">
+            </div>
+            <div class="robot-info">
+                <h2 class="robot-name">Clementine Bauch</h2>
+                <p class="robot-email">Nathan@yesenia.net</p>
+            </div>
+        </div>
+
+        <div class="robot-card" data-name="patricia lebsack" data-email="julianne@kory.org">
+            <div class="robot-image">
+                <img src="https://robohash.org/4?size=200x200" alt="Robot 4" style="border-radius: 50%;">
+            </div>
+            <div class="robot-info">
+                <h2 class="robot-name">Patricia Lebsack</h2>
+                <p class="robot-email">Julianne@kory.org</p>
+            </div>
+        </div>
+
+        <div class="robot-card" data-name="chelsey dietrich" data-email="lucio@annie.ca">
+            <div class="robot-image">
+                <img src="https://robohash.org/5?size=200x200" alt="Robot 5" style="border-radius: 50%;">
+            </div>
+            <div class="robot-info">
+                <h2 class="robot-name">Chelsey Dietrich</h2>
+                <p class="robot-email">Lucio@annie.ca</p>
+            </div>
+        </div>
+
+        <div class="robot-card" data-name="mrs dennis schulist" data-email="karley@jasper.info">
+            <div class="robot-image">
+                <img src="https://robohash.org/6?size=200x200" alt="Robot 6" style="border-radius: 50%;">
+            </div>
+            <div class="robot-info">
+                <h2 class="robot-name">Mrs. Dennis Schulist</h2>
+                <p class="robot-email">Karley@jasper.info</p>
+            </div>
+        </div>
+
+        <div class="robot-card" data-name="kurtis weissnat" data-email="telly@elvis.tv">
+            <div class="robot-image">
+                <img src="https://robohash.org/7?size=200x200" alt="Robot 7" style="border-radius: 50%;">
+            </div>
+            <div class="robot-info">
+                <h2 class="robot-name">Kurtis Weissnat</h2>
+                <p class="robot-email">Telly@elvis.tv</p>
+            </div>
+        </div>
+
+        <div class="robot-card" data-name="nicholas runolfsdottir" data-email="sherwood@rosamond.me">
+            <div class="robot-image">
+                <img src="https://robohash.org/8?size=200x200" alt="Robot 8" style="border-radius: 50%;">
+            </div>
+            <div class="robot-info">
+                <h2 class="robot-name">Nicholas Runolfsdottir</h2>
+                <p class="robot-email">Sherwood@rosamond.me</p>
+            </div>
+        </div>
+
+        <div class="robot-card" data-name="glenna reichert" data-email="chaim@dana.io">
+            <div class="robot-image">
+                <img src="https://robohash.org/9?size=200x200" alt="Robot 9" style="border-radius: 50%;">
+            </div>
+            <div class="robot-info">
+                <h2 class="robot-name">Glenna Reichert</h2>
+                <p class="robot-email">Chaim@dana.io</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const searchInput = document.getElementById('searchInput');
+        const robotCards = document.querySelectorAll('.robot-card');
+
+        searchInput.addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+
+            robotCards.forEach(card => {
+                const name = card.dataset.name;
+                const email = card.dataset.email;
+                const searchableText = `${name} ${email}`;
+
+                if (searchableText.includes(searchTerm)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
