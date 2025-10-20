@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Morse Translator</title>
+    <style>
+      body { font-family: system-ui, sans-serif; margin: 2rem; }
+      #output { white-space: pre-line; padding: 1rem; border: 1px solid #ddd; border-radius: 8px; }
+      button { padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer; }
+    </style>
+  </head>
+  <body>
+    <button id="run">Translate to Morse</button>
+    <div id="output" style="margin-top:1rem;"></div>
+
+    <script>
+      const morse = `{
+        "0": "-----","1": ".----","2": "..---","3": "...--","4": "....-","5": ".....",
+        "6": "-....","7": "--...","8": "---..","9": "----.",
+        "a": ".-","b": "-...","c": "-.-.","d": "-..","e": ".","f": "..-.","g": "--.","h": "....",
+        "i": "..","j": ".---","k": "-.-","l": ".-..","m": "--","n": "-.","o": "---","p": ".--.",
+        "q": "--.-","r": ".-.","s": "...","t": "-","u": "..-","v": "...-","w": ".--","x": "-..-",
+        "y": "-.--","z": "--..",
+        ".": ".-.-.-", ",": "--..--", "?": "..--..", "!": "-.-.--", "-": "-....-", "/": "-..-.",
+        "@": ".--.-.", "(": "-.--.", ")": "-.--.-"
+      }`;
+
+    
+      function toJs() {
+        return new Promise((resolve, reject) => {
+          try {
+            const obj = JSON.parse(morse);
+            if (!obj || Object.keys(obj).length === 0) {
+              reject("Error: Morse mapping is empty.");
+            } else {
+              resolve(obj);
+            }
+          } catch (e) {
+            reject("Error: Invalid Morse JSON.");
+          }
+        });
+      }
+
+    
+      function toMorse(morseJS) {
+        return new Promise((resolve, reject) => {
+          const input = prompt("Enter a word or sentence to convert to Morse:");
+          if (input == null) {
+            return reject("Error: No input provided.");
+          }
+
+          const lower = input.toLowerCase();
+
+         
+          const result = [];
+          for (const ch of lower) {
+            if (ch === " ") {
+              result.push("/"); 
+            } else if (Object.prototype.hasOwnProperty.call(morseJS, ch)) {
+              result.push(morseJS[ch]);
+            } else {
+              return reject(`Error: Character "${ch}" not found in Morse mapping.`);
+            }
+          }
+
+          resolve(result);
+        });
+      }
+
+     
+      function joinWords(morseTranslation) {
+        const el = document.getElementById("output");
+        if (!el) return;
+        el.innerHTML = morseTranslation.join("<br>");
+      }
+
+      document.getElementById("run").addEventListener("click", () => {
+        toJs()
+          .then(toMorse)
+          .then(joinWords)
+          .catch(err => {
+            document.getElementById("output").textContent = String(err);
+            console.error(err);
+          });
+      });
+
+    
+    </script>
+  </body>
+</html>
